@@ -24,3 +24,6 @@ Route::post('/predict',[PredicionController::class,'predict']);
 Route::get('/test',function(){
     return view('admin.home');
 });
+
+Route::get('/clear',[PredicionController::class,'clear']);
+Route::get('/new',[PredicionController::class,'new']);

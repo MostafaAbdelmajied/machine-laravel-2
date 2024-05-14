@@ -20,6 +20,11 @@ a {
   width: 100%;
   margin: 0 auto;
 }
+
+.nav_logo,.nav_item a ,.nav_ button{
+    color: white !important;
+}
+
 .nav_,
 .nav_item {
   display: flex;
@@ -60,7 +65,7 @@ a {
 .home::before {
   content: "";
   position: absolute;
-  height: 172.7vh;
+  height: 184.7vh;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 100;

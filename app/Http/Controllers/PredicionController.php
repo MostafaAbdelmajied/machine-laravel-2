@@ -29,8 +29,8 @@ class PredicionController extends Controller
         'CALC'=> 'required',
         'MTRANS'=> 'required',
         ]);
-
-        $response = Http::post("https://machine-project-app-437e92dd5e13.herokuapp.com/predict",$data);
+        $form_data = $data;
+        $response = Http::post("http://127.0.0.1:5000/predict",$data);
 
         $data_response = $response->json();
         //dd($data);
@@ -39,8 +39,23 @@ class PredicionController extends Controller
             $data['user_id'] = auth()->user()->id;
         }
         $data['prediction'] = $prediction;
+        session()->put('prediction',$prediction);
         Prediction::create($data);
-        return view('index',compact('prediction'));
+        return view('index',compact('prediction','form_data'));
+    }
+
+    public function new(){
+        return view('index');
+    }
+
+    public function clear(){
+        if(session()->has('prediction')){
+            $prediction = session()->get('prediction');
+            session()->remove('prediction');
+            return view('index',compact('prediction'));
+        }else{
+            return view('index');
+        }
     }
 }
 
