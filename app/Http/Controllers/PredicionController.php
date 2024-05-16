@@ -30,7 +30,7 @@ class PredicionController extends Controller
         'MTRANS'=> 'required',
         ]);
         $form_data = $data;
-        $response = Http::post("http://127.0.0.1:5000/predict",$data);
+        $response = Http::post("https://machine-project-app-437e92dd5e13.herokuapp.com/predict",$data);
 
         $data_response = $response->json();
         //dd($data);
